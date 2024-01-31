@@ -1,52 +1,46 @@
 package uvg.edu.gt.Components;
 
-import java.util.*;
+import java.util.Stack;
 
 public class Calcu {
     /**
      * @param array
      * method to make a postfix result
      */
-    public static void postfix(String[] array){
-        Stack<Integer> numbers = new Stack<>();
-        int result = 0;
-
-        for (String element : array) {
-            String[] valor = element.split(" ");
-            for(String val : valor){
-                if(val.matches("-?\\d+")){
-                    numbers.push(Integer.parseInt(val));
+    public static void postfix(String arrays){
+        Stack<Double> numbers = new Stack<>();
+        String[] array = arrays.split(" ");
+        double result = 0;
+        //run each element of the array given
+        for (String element : array){
+           
+            if (element.matches("-?\\d+(\\.\\d+)?")){
+                numbers.push(Double.parseDouble(element));
+            }
+            else{
+                double a = numbers.pop();
+                double b = numbers.pop();
+                //Operations using push
+                switch (element) {
+                    case "+":
+                        numbers.push(a+b);            
+                        break;
+                    case "-":
+                        numbers.push(a-b);
+                        break;
+                    case "*":
+                        numbers.push(a*b);
+                        break;
+                    case "/":
+                        numbers.push(a/b);
+                        break;
                 }
-                else{
-                    if(numbers.size() >= 2){
-                        int a = numbers.pop();
-                        int b = numbers.pop();
-
-                        switch (val) {
-                            case "+":
-                                numbers.push(a+b);            
-                                break;
-                            case "-":
-                                numbers.push(a-b);
-                                break;
-                            case "*":
-                                numbers.push(a*b);
-                                break;
-                            case "/":
-                                numbers.push(a/b);
-                                break;
-                        }
-                    }
-                }
-            }  
+            }
         }
+            
+        
         result = numbers.isEmpty() ? 0: numbers.pop();
         System.out.println("Resultado: " + result);
-    }
-    public static void main(String[] args) {
-        String[] strArray = {"1 2 + 4 * 3 +"};
-        postfix(strArray);
-
     }
     
 }
