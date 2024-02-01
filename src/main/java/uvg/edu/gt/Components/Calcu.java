@@ -1,14 +1,13 @@
 package uvg.edu.gt.Components;
 
-import java.util.Stack;
 
 public class Calcu {
     /**
      * @param array
      * method to make a postfix result
      */
-    public static void postfix(String arrays){
-        Stack<Double> numbers = new Stack<>();
+    public void postfix(String arrays){
+        UVGStack<Double> numbers = new ElMejorStack<>();
         String[] array = arrays.split(" ");
         double result = 0;
         //run each element of the array given

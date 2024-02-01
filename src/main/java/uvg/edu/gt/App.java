@@ -13,7 +13,9 @@ public class App {
      *             think it works with float and negative numbers
      */
     public static void main(String[] args) {
-        String strArray = "2 3 1 * + 9 - ";
-        Calcu.postfix(strArray);
+        String strArray = "1 2 + 4 * 3 +";
+        //2 3 1 * + 9 -
+        Calcu calcu = new Calcu();
+        calcu.postfix(strArray);
     }
 }
