@@ -2,30 +2,118 @@ package uvg.edu.gt;
 
 import static org.junit.Assert.*;
 
+import javax.print.DocFlavor.INPUT_STREAM;
+
 import org.junit.Test;
 
 import uvg.edu.gt.Components.ElMejorStack;
 import uvg.edu.gt.Components.UVGStack;
 
 public class ElMejorStackTest {
-    
+
     @Test
-    public void testStackCreation(){
-        UVGStack<Integer> intStack = new ElMejorStack<Integer>();
-        UVGStack<String> stringStack = new ElMejorStack<String>();
-        UVGStack<Double> doubleStack = new ElMejorStack<Double>();
-        UVGStack<Float> floatStack = new ElMejorStack<Float>();
+    public void testPush(){
+        UVGStack<Integer> stack = new ElMejorStack<Integer>();
 
-        intStack.push(1);
-        stringStack.push("HI");
+        stack.push(1);
+        assertFalse(stack.isEmpty());
+    }
 
+    @Test
+    public void testStackTop(){
+        UVGStack<Integer> stack = new ElMejorStack<Integer>();
+
+        stack.push(1);
+        int top = stack.top();
+        assertEquals(1, top);
+
+        stack.push(2);
+        top = stack.top();
+        assertEquals(2, top);
+
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        top = stack.top();
+        assertEquals(5, top);
         
+    }
+
+    @Test
+    public void testStackPop(){
+        UVGStack<Integer> stack = new ElMejorStack<Integer>();
+
+        stack.push(1);
+        int pop = stack.pop();
+        assertEquals(1, pop);
+
+        stack.push(2);
+        pop = stack.pop();
+        assertEquals(2, pop);
+
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        pop = stack.top();
+        assertEquals(5, pop);
     }
 
     @Test 
     public void testIsEmpty(){
-        UVGStack<String> stack = new ElMejorStack<String>();
+
+        UVGStack<Integer> stack = new ElMejorStack<Integer>();
+
         assertTrue(stack.isEmpty());
 
+        stack.push(1);
+        assertFalse(stack.isEmpty());
+        
+        stack.top();
+        assertFalse(stack.isEmpty());
+
+        stack.pop();
+        assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void testBehavior(){
+        UVGStack<Integer> stack = new ElMejorStack<Integer>();
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.push(6);
+
+        int top = stack.top();
+        assertEquals(6, top);
+
+        int pop = stack.pop();
+        top = stack.top();
+        assertEquals(6, pop);
+        assertEquals(5, top);
+
+        pop = stack.pop();
+        assertEquals(5, pop);
+        pop = stack.pop();
+        assertEquals(4, pop);
+        pop = stack.pop();
+        assertEquals(3, pop);
+
+        top = stack.top();
+        assertEquals(2, top);
+
+        stack.push(7);
+        
+        top = stack.top();
+        assertEquals(7, top);
+
+        pop = stack.pop();
+        top = stack.top();
+        assertEquals(7, pop);
+        assertEquals(2, top);
+    }
+
 }
+

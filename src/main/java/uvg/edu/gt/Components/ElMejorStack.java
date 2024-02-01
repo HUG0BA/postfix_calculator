@@ -17,14 +17,15 @@ public class ElMejorStack<T> implements UVGStack<T> {
 
     @Override
     public T pop() {
-        return vector.lastElement();
+        T temp = vector.lastElement();
+        vector.remove(vector.indexOf(temp));
+        return temp;
+        
     }
 
     @Override
     public T top() {
-        T temp = vector.lastElement();
-        vector.remove(vector.indexOf(temp));
-        return temp;
+        return vector.lastElement();
 
     }
 

@@ -1,45 +1,47 @@
 package uvg.edu.gt.Components;
 
 
-public class Calcu {
+public class Calcu implements POSFIXCalc{
     /**
      * @param array
      * method to make a postfix result
      */
-    public void postfix(String arrays){
-        UVGStack<Double> numbers = new ElMejorStack<>();
-        String[] array = arrays.split(" ");
-        double result = 0;
-        //run each element of the array given
+
+    @Override
+    public int calc(String str) {
+        UVGStack<Integer> numbers = new ElMejorStack<Integer>();
+        String[] array = str.split(" ");
+        int a;
+        int b;
+
         for (String element : array){
-           
-            if (element.matches("-?\\d+(\\.\\d+)?")){
-                numbers.push(Double.parseDouble(element));
+            switch (element) {
+                case "+":
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b+a);            
+                    break;
+                case "-":
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b-a);
+                    break;
+                case "*":
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b*a);
+                    break;
+                case "/":
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b/a);
+                    break;
+                default:
+                    numbers.push(Integer.parseInt(element));
             }
-            else{
-                double a = numbers.pop();
-                double b = numbers.pop();
-                //Operations using push
-                switch (element) {
-                    case "+":
-                        numbers.push(a+b);            
-                        break;
-                    case "-":
-                        numbers.push(a-b);
-                        break;
-                    case "*":
-                        numbers.push(a*b);
-                        break;
-                    case "/":
-                        numbers.push(a/b);
-                        break;
-                }
-            }
+              
         }
-            
-        
-        result = numbers.isEmpty() ? 0: numbers.pop();
-        System.out.println("Resultado: " + result);
+
+        return numbers.isEmpty() ? 0: numbers.pop();
     }
-    
 }
