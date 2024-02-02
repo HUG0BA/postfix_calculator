@@ -17,12 +17,4 @@ public class CalcuTest {
         assertEquals(7, calcu.calc("8 4 * 4 / 5 + 6 -"));
         assertEquals(12, calcu.calc("5 4 + 3 / 9 * 6 - 3 + 2 /"));
     }
-
-    @Test
-    public void test(){
-        POSFIXCalc calcu = new Calcu();
-
-        assertEquals(7, calcu.calc("8 4 * 4 / 5 + 6 -"));
-
-    }
 }

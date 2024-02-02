@@ -39,11 +39,7 @@ public class Lector {
             String line = scan.nextLine().toString();
             if(line.matches("^[0123456789/\\\\+-/* ]+$")){
                 content.add(line);
-            }else{
-                scan.close();
-                return null;
             }
-            
         }
 
         scan.close();
