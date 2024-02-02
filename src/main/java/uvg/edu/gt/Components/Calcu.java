@@ -1,118 +1,104 @@
 package uvg.edu.gt.Components;
 
-
-public class Calcu implements POSFIXCalc{
+public class Calcu implements POSFIXCalc {
     /**
      * @param array
-     * method to make a postfix result
+     *              method to make a postfix result
      */
-
-    
 
     @Override
     public int calc(String str) {
         UVGStack<Integer> numbers = new ElMejorStack<Integer>();
         String[] array = str.split(" ");
-        
+
         int a;
         int b;
 
-        for (String element : array){
+        for (String element : array) {
             switch (element) {
                 case "+":
-                    if(!numbers.isEmpty()){
+                    if (!numbers.isEmpty()) {
                         int primerNumero = numbers.pop();
                         boolean estaVacio = numbers.isEmpty();
                         numbers.push(primerNumero);
 
-                        if(estaVacio){
+                        if (estaVacio) {
                             System.out.println("El Stack debe contener al menos 2 numeros.");
                         }
-                    }
-                    else{
+                    } else {
                         System.out.println("El Stack debe contener al menos 2 numeros.");
-                    }
-                    {
-                        a = numbers.pop();
-                        b = numbers.pop();
-                        numbers.push(b+a);   
-                    }                             
+                    } {
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b + a);
+                }
                     break;
 
                 case "-":
-                    if(!numbers.isEmpty()){
+                    if (!numbers.isEmpty()) {
                         int primerNumero = numbers.pop();
                         boolean estaVacio = numbers.isEmpty();
                         numbers.push(primerNumero);
 
-                        if(estaVacio){
+                        if (estaVacio) {
                             System.out.println("El Stack debe contener al menos 2 numeros.");
                         }
-                    }
-                    else{
+                    } else {
                         System.out.println("El Stack debe contener al menos 2 numeros.");
-                    }
-                    {
-                        a = numbers.pop();
-                        b = numbers.pop();
-                        numbers.push(b-a);  
-                    }
+                    } {
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b - a);
+                }
                     break;
-                    
+
                 case "*":
-                    if(!numbers.isEmpty()){
+                    if (!numbers.isEmpty()) {
                         int primerNumero = numbers.pop();
                         boolean estaVacio = numbers.isEmpty();
                         numbers.push(primerNumero);
 
-                        if(estaVacio){
+                        if (estaVacio) {
                             System.out.println("El Stack debe contener al menos 2 numeros.");
                         }
-                    }
-                    else{
+                    } else {
                         System.out.println("El Stack debe contener al menos 2 numeros.");
-                    }
-                    {
-                        a = numbers.pop();
-                        b = numbers.pop();
-                        numbers.push(b*a);
-                    }
-                    
+                    } {
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    numbers.push(b * a);
+                }
+
                     break;
                 case "/":
-                    if(!numbers.isEmpty()){
+                    if (!numbers.isEmpty()) {
                         int primerNumero = numbers.pop();
                         boolean estaVacio = numbers.isEmpty();
                         numbers.push(primerNumero);
 
-                        if(estaVacio){
+                        if (estaVacio) {
                             System.out.println("El Stack debe contener al menos 2 numeros.");
                         }
-                    }
-                    else{
+                    } else {
                         System.out.println("El Stack debe contener al menos 2 numeros.");
+                    } {
+                    a = numbers.pop();
+                    b = numbers.pop();
+                    if (a != 0) {
+                        numbers.push(b / a);
+                    } else {
+                        System.out.println("No se puede dividir por 0 en: " + b + "/" + a);
                     }
-                    {
-                        a = numbers.pop();
-                        b = numbers.pop();
-                        if(a != '0'){
-                            numbers.push(b/a);
-                        }
-                        else{
-                            System.out.println("No se puede dividir por 0 en: " + b + "/" + a);
-                        } 
-                    }
-                    
+                }
+
                     break;
-                
+
                 default:
                     numbers.push(Integer.parseInt(element));
             }
-            
+
         }
 
-        
-    
-    return numbers.isEmpty() ? 0: numbers.pop();
+        return numbers.isEmpty() ? 0 : numbers.pop();
     }
 }
