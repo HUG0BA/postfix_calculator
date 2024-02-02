@@ -11,7 +11,7 @@ import java.util.Vector;
 public class LectorTest {
     
     @Test
-    public void testLector() throws FileNotFoundException{
+    public void testNormalLector() throws FileNotFoundException{
         Lector lector = new Lector("src/test/resources/datosTest.txt");
         Vector<String> strings = lector.readTXTFile();
 

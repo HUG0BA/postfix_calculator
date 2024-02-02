@@ -24,9 +24,30 @@ public class Lector {
         while(scan.hasNextLine()){
             content.add(scan.nextLine().toString());
         }
+
         scan.close();
 
         return content;
+    }
 
+    public Vector<String> readAndFilterTXTFile() throws FileNotFoundException{
+
+        Scanner scan = new Scanner(file);
+        Vector<String> content = new Vector<String>();
+
+        while(scan.hasNextLine()){
+            String line = scan.nextLine().toString();
+            if(line.matches("^[0123456789/\\\\+-/* ]+$")){
+                content.add(line);
+            }else{
+                scan.close();
+                return null;
+            }
+            
+        }
+
+        scan.close();
+
+        return content;
     }
 }
