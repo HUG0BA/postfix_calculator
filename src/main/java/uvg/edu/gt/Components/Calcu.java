@@ -3,7 +3,9 @@ package uvg.edu.gt.Components;
 public class Calcu implements POSFIXCalc {
     /**
      * @param array
-     *              method to make a postfix result
+     * method to make a postfix result
+     * Agarra dos numeros dentro de el Stack (numbers) y realiza el operando
+     * Se debe de verificar si el Stack (numbers) esta vacio antes de realizar una operacion.
      */
 
     @Override
