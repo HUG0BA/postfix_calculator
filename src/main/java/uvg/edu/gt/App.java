@@ -22,7 +22,7 @@ public class App {
         
        
         try {
-            Vector<String> strVector = leer.readTXTFile();
+            Vector<String> strVector = leer.readAndFilterTXTFile();
             for (String elemento: strVector){
                 System.out.println("Array a evaluar: " + elemento);
                 System.out.println(calcu.calc(elemento));  

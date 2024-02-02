@@ -16,6 +16,12 @@ public class Lector {
         this.file = file;
     }
 
+    
+    /** 
+     * @return Vector<String>
+     * @throws FileNotFoundException
+     * @description Leer cada línea del archivo de texto
+     */
     public Vector<String> readTXTFile() throws FileNotFoundException{
 
         Scanner scan = new Scanner(file);
@@ -30,6 +36,12 @@ public class Lector {
         return content;
     }
 
+    
+    /** 
+     * @return Vector<String>
+     * @throws FileNotFoundException
+     * @description IMPORTANTE: método que además de leer el archivo, elimina las líneas que contengan valores no numéricos o dentro de los signos aceptados (+, -, / ,*)
+     */
     public Vector<String> readAndFilterTXTFile() throws FileNotFoundException{
 
         Scanner scan = new Scanner(file);

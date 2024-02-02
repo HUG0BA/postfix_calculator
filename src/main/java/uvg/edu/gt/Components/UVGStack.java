@@ -1,6 +1,5 @@
 package uvg.edu.gt.Components;
 
-import java.util.Vector;
 
 public interface UVGStack<T> {
 
