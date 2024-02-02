@@ -12,20 +12,18 @@ import uvg.edu.gt.Components.Lector;
 public class App {
     /**
      * @param args
-     *             basically the UI haha
-     *             
+     *             Implementacion de clases Lector y Calcu
      */
     public static void main(String[] args) {
         Calcu calcu = new Calcu();
         Lector leer = new Lector("src/test/resources/datosTest.txt");
         System.out.println("Bienvenido a  La Mejor PosFix Calculator!");
-        
-       
+
         try {
             Vector<String> strVector = leer.readAndFilterTXTFile();
-            for (String elemento: strVector){
+            for (String elemento : strVector) {
                 System.out.println("Array a evaluar: " + elemento);
-                System.out.println(calcu.calc(elemento));  
+                System.out.println(calcu.calc(elemento));
             }
         } catch (Exception e) {
             // TODO: handle exception
