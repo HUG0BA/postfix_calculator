@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import uvg.edu.gt.Components.Calcu;
 import uvg.edu.gt.Components.Lector;
+import uvg.edu.gt.Components.POSFIXCalc;
 
 /**
  * MAIN CLASS
@@ -16,7 +17,7 @@ public class App {
      *             
      */
     public static void main(String[] args) {
-        Calcu calcu = new Calcu();
+        POSFIXCalc calcu = new Calcu();
         Lector leer = new Lector("src/test/resources/datosTest.txt");
         System.out.println("Bienvenido a  La Mejor PosFix Calculator!");
         
